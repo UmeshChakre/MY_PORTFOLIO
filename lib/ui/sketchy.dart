@@ -173,8 +173,81 @@ class HandHeading extends StatelessWidget {
         foregroundPainter: _UnderlinePainter(underline, seed),
         child: Padding(
           padding: const EdgeInsets.only(bottom: 10),
-          child: Text(text, style: style),
+          child: RoughText(text, style: style, seed: seed),
         ),
+      ),
+    );
+  }
+}
+
+/// Text where every letter is nudged off the baseline and slightly
+/// rotated, like quick hand lettering. Words stay intact when wrapping.
+/// Meant for short headings: each letter is its own widget.
+class RoughText extends StatelessWidget {
+  const RoughText(
+    this.text, {
+    super.key,
+    this.style = PaintText.heading,
+    this.seed = 1,
+    this.wobble = 1,
+    this.textAlign = TextAlign.start,
+  });
+
+  final String text;
+  final TextStyle style;
+  final int seed;
+
+  /// 0 = straight text, 1 = default roughness.
+  final double wobble;
+  final TextAlign textAlign;
+
+  @override
+  Widget build(BuildContext context) {
+    final r = math.Random(seed);
+    final size = style.fontSize ?? 20;
+    final words = text.split(' ');
+    final spans = <InlineSpan>[];
+    for (var w = 0; w < words.length; w++) {
+      if (w > 0) spans.add(const TextSpan(text: ' '));
+      spans.add(
+        WidgetSpan(
+          alignment: PlaceholderAlignment.baseline,
+          baseline: TextBaseline.alphabetic,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.baseline,
+            textBaseline: TextBaseline.alphabetic,
+            children: [
+              for (final ch in words[w].characters)
+                Transform.translate(
+                  offset: Offset(
+                    0,
+                    (r.nextDouble() - 0.5) * size * 0.09 * wobble,
+                  ),
+                  child: Transform.rotate(
+                    angle: (r.nextDouble() - 0.5) * 0.14 * wobble,
+                    child: Text(
+                      ch,
+                      style: style.copyWith(
+                        // Small per-letter size variation.
+                        fontSize:
+                            size * (1 + (r.nextDouble() - 0.5) * 0.08 * wobble),
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      );
+    }
+    return Semantics(
+      label: text,
+      excludeSemantics: true,
+      child: Text.rich(
+        TextSpan(children: spans),
+        style: style,
+        textAlign: textAlign,
       ),
     );
   }

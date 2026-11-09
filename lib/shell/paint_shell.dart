@@ -8,6 +8,7 @@ import '../platform/browser.dart';
 import '../theme/paint_theme.dart';
 import '../ui/bevel.dart';
 import '../ui/pixel_icons.dart';
+import '../ui/sketchy.dart';
 import 'dialogs.dart';
 import 'menus.dart';
 import 'palette.dart';
@@ -196,7 +197,14 @@ class _CanvasContent extends StatelessWidget {
               compact ? 10 : 30,
               compact ? 24 : 48,
             ),
-            child: const SelectionArea(child: Desk()),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SelectionArea(child: Desk()),
+                SizedBox(height: 28),
+                _VibeNote(),
+              ],
+            ),
           ),
           Positioned.fill(child: DoodleLayer(paint: paint)),
           // Paint's canvas resize handles.
@@ -221,6 +229,30 @@ class _CanvasContent extends StatelessWidget {
               ),
             ),
         ],
+      ),
+    );
+  }
+}
+
+/// The little confession scribbled at the bottom of the canvas.
+class _VibeNote extends StatelessWidget {
+  const _VibeNote();
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: Alignment.centerRight,
+      child: Transform.rotate(
+        angle: -0.025,
+        child: RoughText(
+          "p.s. yes, of course it's vibecoded ;)",
+          seed: 404,
+          wobble: 1.3,
+          style: PaintText.body.copyWith(
+            fontSize: 17,
+            color: PaintColors.darkGrey,
+          ),
+        ),
       ),
     );
   }

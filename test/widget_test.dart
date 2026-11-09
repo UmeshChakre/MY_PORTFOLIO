@@ -6,10 +6,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:my_portfolio/main.dart';
 import 'package:my_portfolio/paint/paint_state.dart';
 import 'package:my_portfolio/shell/taskbar.dart';
+import 'package:my_portfolio/ui/sketchy.dart';
 
 Future<void> _loadFonts() async {
   const fonts = {
-    'PatrickHand': 'assets/fonts/PatrickHand-Regular.ttf',
+    'GochiHand': 'assets/fonts/GochiHand-Regular.ttf',
     'PermanentMarker': 'assets/fonts/PermanentMarker-Regular.ttf',
     'VT323': 'assets/fonts/VT323-Regular.ttf',
   };
@@ -18,6 +19,9 @@ Future<void> _loadFonts() async {
     await (FontLoader(e.key)..addFont(bytes)).load();
   }
 }
+
+Finder _rough(String text) =>
+    find.byWidgetPredicate((w) => w is RoughText && w.text == text);
 
 void main() {
   setUpAll(_loadFonts);
@@ -34,16 +38,17 @@ void main() {
     await pumpApp(tester, const Size(1440, 900));
 
     expect(find.text('Untitled - Paint'), findsOneWidget);
-    expect(find.text('Umesh Chakradhar'), findsOneWidget);
+    expect(_rough('Umesh Chakradhar'), findsOneWidget);
     expect(find.text('about_me.txt'), findsOneWidget);
     expect(find.text('Send Message.txt - Notepad'), findsOneWidget);
+    expect(_rough("p.s. yes, of course it's vibecoded ;)"), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 
   testWidgets('phone layout renders without overflow', (tester) async {
     await pumpApp(tester, const Size(375, 812));
 
-    expect(find.text('Umesh Chakradhar'), findsOneWidget);
+    expect(_rough('Umesh Chakradhar'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
 

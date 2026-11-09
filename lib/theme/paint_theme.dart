@@ -54,7 +54,7 @@ abstract final class PaintColors {
 }
 
 abstract final class PaintFonts {
-  static const hand = 'PatrickHand';
+  static const hand = 'GochiHand';
   static const marker = 'PermanentMarker';
   static const pixel = 'VT323';
 }

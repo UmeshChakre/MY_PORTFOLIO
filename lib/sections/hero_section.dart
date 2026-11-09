@@ -209,7 +209,7 @@ class _StatsStamp extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 118,
+                        width: 108,
                         child: Text(
                           s.value,
                           maxLines: 1,

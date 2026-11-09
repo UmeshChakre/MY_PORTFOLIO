@@ -60,9 +60,9 @@ flutter:
     - assets/images/chakre.jpeg
 
   fonts:
-    - family: PatrickHand
+    - family: GochiHand
       fonts:
-        - asset: assets/fonts/PatrickHand-Regular.ttf
+        - asset: assets/fonts/GochiHand-Regular.ttf
     - family: PermanentMarker
       fonts:
         - asset: assets/fonts/PermanentMarker-Regular.ttf
