@@ -1,12 +1,12 @@
 {
-    "name": "my_portfolio",
-    "short_name": "my_portfolio",
+    "name": "Umesh Chakradhar - Portfolio",
+    "short_name": "Umesh",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#008080",
+    "theme_color": "#000080",
+    "description": "Mobile Application Developer - Flutter & native Android. A portfolio drawn in MS Paint style.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {

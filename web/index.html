@@ -1,46 +1,214 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
+    $FLUTTER_BASE_HREF is replaced by `flutter build web --base-href`.
   -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
 
-  <!-- iOS meta tags & icons -->
+  <!-- Primary SEO -->
+  <title>Umesh Chakradhar | Mobile Application Developer</title>
+  <meta name="description" content="Umesh Chakradhar - Mobile Application Developer with 6+ years building offline-first Flutter and native Android apps for fintech, reaching 500k+ users. Based in Bhaktapur, Nepal.">
+  <meta name="keywords" content="Umesh Chakradhar, Flutter developer, Android developer, mobile application developer, Kotlin, offline-first, fintech, Nepal, Bhaktapur, portfolio">
+  <meta name="author" content="Umesh Chakradhar">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#000080">
+  <meta name="color-scheme" content="light">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="profile">
+  <meta property="og:site_name" content="Umesh Chakradhar">
+  <meta property="og:title" content="Umesh Chakradhar | Mobile Application Developer">
+  <meta property="og:description" content="6+ years building offline-first Flutter & native Android apps for fintech. 20+ projects, 500k+ users. A portfolio drawn in MS Paint style.">
+  <meta property="og:image" content="icons/Icon-512.png">
+  <meta property="og:image:width" content="512">
+  <meta property="og:image:height" content="512">
+  <meta property="og:image:alt" content="Pixel-art portrait of Umesh Chakradhar">
+  <meta property="og:locale" content="en_US">
+  <meta property="profile:first_name" content="Umesh">
+  <meta property="profile:last_name" content="Chakradhar">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Umesh Chakradhar | Mobile Application Developer">
+  <meta name="twitter:description" content="6+ years building offline-first Flutter & native Android apps for fintech. 20+ projects, 500k+ users.">
+  <meta name="twitter:image" content="icons/Icon-512.png">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Umesh Chakradhar",
+    "jobTitle": "Mobile Application Developer",
+    "description": "Mobile Application Developer specialising in offline-first Flutter and native Android apps for fintech, with production apps serving 500,000+ users.",
+    "email": "mailto:umeshchakradhar11@gmail.com",
+    "telephone": "+977-9843661414",
+    "image": "icons/Icon-512.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Thimi, Bhaktapur",
+      "addressCountry": "NP"
+    },
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Vanilla Tech Pvt Ltd"
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "KIST College"
+    },
+    "knowsAbout": ["Flutter", "Dart", "Android", "Kotlin", "Java", "Jetpack Compose", "Offline-first architecture", "Fintech", "CI/CD", "Firebase"],
+    "knowsLanguage": ["English", "Nepali", "Newari", "Hindi"],
+    "sameAs": [
+      "https://github.com/UmeshChakre",
+      "https://www.linkedin.com/in/umesh-chakradhar/",
+      "https://www.facebook.com/umesh.cronaldo7/",
+      "https://www.instagram.com/umesh_chakre/"
+    ]
+  }
+  </script>
+
+  <!-- PWA / icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="my_portfolio">
+  <meta name="apple-mobile-web-app-title" content="Umesh Chakradhar">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>my_portfolio</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    html, body { margin: 0; height: 100%; background: #008080; }
+
+    /* Crawlable copy of the portfolio: invisible, but in the DOM for
+       search engines and link-preview bots that do not run Flutter. */
+    #seo-content {
+      position: absolute; width: 1px; height: 1px; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
+
+    /* Windows 95 style loading dialog, shown until Flutter paints. */
+    #splash {
+      position: fixed; inset: 0; display: flex; align-items: center;
+      justify-content: center; background: #008080; z-index: 10;
+      transition: opacity .3s ease; font: 16px/1.2 "Courier New", monospace;
+    }
+    #splash.done { opacity: 0; pointer-events: none; }
+    #splash .win {
+      width: min(320px, 86vw); background: #c0c0c0; padding: 2px;
+      box-shadow: inset -1px -1px #000, inset 1px 1px #dfdfdf,
+                  inset -2px -2px #808080, inset 2px 2px #fff;
+    }
+    #splash .title {
+      background: linear-gradient(90deg, #000080, #1084d0); color: #fff;
+      padding: 4px 6px; font-weight: bold;
+    }
+    #splash .body { padding: 16px; color: #000; }
+    #splash .bar {
+      margin-top: 12px; height: 18px; background: #fff; padding: 2px;
+      box-shadow: inset 1px 1px #808080, inset -1px -1px #fff;
+      overflow: hidden;
+    }
+    #splash .bar i {
+      display: block; height: 100%; width: 40%;
+      background: repeating-linear-gradient(90deg, #000080 0 10px, transparent 10px 12px);
+      animation: load 1.4s steps(12) infinite;
+    }
+    @keyframes load { from { transform: translateX(-100%); } to { transform: translateX(250%); } }
+    @media (prefers-reduced-motion: reduce) { #splash .bar i { animation: none; width: 60%; } }
+  </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+  <div id="splash" aria-hidden="true">
+    <div class="win">
+      <div class="title">Paint</div>
+      <div class="body">
+        Opening umesh_chakradhar.bmp...
+        <div class="bar"><i></i></div>
+      </div>
+    </div>
+  </div>
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
+  <main id="seo-content">
+    <h1>Umesh Chakradhar - Mobile Application Developer &amp; Tech Enthusiast</h1>
+    <p>6+ years of experience. 20+ projects worked on. 500k+ users reached.</p>
+
+    <section>
+      <h2>About Me</h2>
+      <p>Experienced Mobile Application Developer with a strong background working in a Fintech company.
+        Specialised in building robust, scalable Offline-First and Online Mobile Applications across both
+        Native Android (Kotlin, Java, Android SDKs) and Hybrid Flutter. Engineered production-grade
+        applications that have scaled to over 500,000 active users.</p>
+      <p>Skills: Flutter, Dart, Kotlin, Java, Android SDK, Jetpack Compose, offline-first architecture,
+        REST APIs, Flutter SDKs and plugins, Firebase, Codemagic, Fastlane, GitHub Actions, Mockito,
+        Espresso, Patrol, Maestro.</p>
+      <p>Languages: English, Nepali, Newari, Hindi.</p>
+      <p><a href="assets/assets/cv.pdf">Download CV (PDF)</a></p>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      <h3>Senior Mobile Developer - Vanilla Tech Pvt Ltd, Hattisar (Jun 2022 - Present)</h3>
+      <p>Mobile apps for eWallets, airlines and remittance. Flutter SDKs and modules (RPP, Remit)
+        integrated into an app with a 400k+ user base. Unit and integration tests. CI/CD with
+        Codemagic, Fastlane and GitHub Actions.</p>
+      <h3>Mid Level Android Developer (Java) - Synergy Tech Pvt Ltd, Pulchowk (Aug 2019 - Jun 2022)</h3>
+      <p>Native Android tablet-banking apps for microfinance, a Flutter inventory app, printer and
+        fingerprint integration, unit testing.</p>
+      <h3>Intern &amp; Junior Android Developer - Code Logic Technologies, Buddhanagar (Apr 2019 - Aug 2019)</h3>
+      <p>School management app features and fixes; a news portal app built from scratch.</p>
+      <h3>Side project: Online College Notes (Flutter, Google Play)</h3>
+      <p>Past questions and study notes from Class 10 to Bachelors level, online and offline.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <p>Bachelors in Information Technology - KIST College, Kamalpokhari (2015 - 2019)</p>
+      <p>+2 Management - DAV SKVB HSS, Jawalakhel (2012 - 2014)</p>
+    </section>
+
+    <section>
+      <h2>Hobbies &amp; Interests</h2>
+      <ul>
+        <li>Football - die-hard Manchester United fan</li>
+        <li>Movies</li>
+        <li>Music</li>
+        <li>Online gaming</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Connect</h2>
+      <ul>
+        <li><a href="https://github.com/UmeshChakre" rel="me">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/umesh-chakradhar/" rel="me">LinkedIn</a></li>
+        <li><a href="https://www.facebook.com/umesh.cronaldo7/" rel="me">Facebook</a></li>
+        <li><a href="https://www.instagram.com/umesh_chakre/" rel="me">Instagram</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Let's Work Together</h2>
+      <address>
+        Location: Thimi, Bhaktapur, Nepal<br>
+        Phone: <a href="tel:+9779843661414">9843661414</a><br>
+        Email: <a href="mailto:umeshchakradhar11@gmail.com">umeshchakradhar11@gmail.com</a><br>
+        LinkedIn: <a href="https://www.linkedin.com/in/umesh-chakradhar/">linkedin.com/in/umesh-chakradhar</a>
+      </address>
+    </section>
+  </main>
+
+  <script>
+    // Fallback in case the app never calls removeSplash().
+    window.addEventListener('flutter-first-frame', function () {
+      var s = document.getElementById('splash');
+      if (s) { s.classList.add('done'); setTimeout(function () { s.remove(); }, 400); }
+    });
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
