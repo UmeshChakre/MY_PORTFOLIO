@@ -51,8 +51,7 @@ class HeroSection extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          'I build fast, offline-first mobile apps in Flutter and native '
-          'Android - mostly for fintech, where every tap moves real money.',
+          'I CREATE APPS',
           textAlign: compact ? TextAlign.center : TextAlign.start,
           style: PaintText.body,
         ),
